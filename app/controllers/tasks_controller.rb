@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.includes(:comments)
+    @tasks = Task.includes(:comments).with_rich_text_content_and_embeds
   end
 
   def show
@@ -19,6 +19,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :content)
   end
 end
