@@ -1,26 +1,48 @@
 <h1>All Tasks</h1>
+<% @tasks.find_each do |task| %>
+  <h3><%= task.name.titleize %></h3>
+  <% task.comments.find_each do |comment| %>
+    <%= comment.note %>
+  <% end %>
+<% end %>
+
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Comment Notes</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
-    <% @tasks.each_with_index do |task, index| %>
-      <tr>
-        <th scope="row"><%= index + 1 %></th>
-        <td><%= task.name.titleize %></td>
-        <td style="color: <%= ['red', 'blue', 'green'].sample %>">
-          <% task.comments.find_each do |comment| %>
-            <%= comment.note %> <br/>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
   </tbody>
 </table>
 
-<%= link_to "New Task", new_task_path %>
+
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+  Tooltip on top
+</button>
+
+<script type="text/javascript">
+  $('table').css("color", "blue");
+</script>
