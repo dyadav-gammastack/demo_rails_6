@@ -11,5 +11,13 @@
     <%= form.rich_text_area :content %>
   </div>
 
+  <fieldset>
+    <legend>Comments:</legend>
+    <%= form.fields_for :comments do |comments_form| %>
+      <%= render "comment_fields", f: comments_form %>
+    <% end %>
+    <%= link_to_add_fields "Add Comments", form, :comments %>
+  </fieldset>
+
   <%= form.submit "Create" %>
 <% end %>
